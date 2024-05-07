@@ -130,7 +130,7 @@ def RRT(img, img2, start, end, stepSize):
                 cv2.line(img2, (int(node_list[i].parent_x[j]),int(node_list[i].parent_y[j])), (int(node_list[i].parent_x[j+1]),int(node_list[i].parent_y[j+1])), (255,0,0), thickness=2, lineType=8)
             # cv2.waitKey(1)
             # cv2.imwrite("media/"+str(i)+".jpg",img2)
-            cv2.imwrite("out_easy.jpg",img2)
+            cv2.imwrite("out_hard.jpg",img2)
             break
 
         elif nodeCon:
@@ -172,9 +172,9 @@ if __name__ == '__main__':
                     help='Path of the image containing mazes')
     parser.add_argument('-s', type=int, default=10,metavar='Stepsize', action='store', dest='stepSize',
                     help='Step-size to be used for RRT branches')
-    parser.add_argument('-start', type=int, default=[40,300], metavar='startCoord', dest='start', nargs='+',
+    parser.add_argument('-start', type=int, default=[160,22], metavar='startCoord', dest='start', nargs='+',
                     help='Starting position in the maze')
-    parser.add_argument('-stop', type=int, default=[100,300], metavar='stopCoord', dest='stop', nargs='+',
+    parser.add_argument('-stop', type=int, default=[444,302], metavar='stopCoord', dest='stop', nargs='+',
                     help='End position in the maze')
     parser.add_argument('-selectPoint', help='Select start and end points from figure', action='store_true')
 
@@ -189,8 +189,8 @@ if __name__ == '__main__':
 
     img = cv2.imread(args.imagePath,0) # load grayscale maze image
     img2 = cv2.imread(args.imagePath) # load colored maze image
-    start = tuple(args.start) #(40,300) # starting coordinate
-    end = tuple(args.stop) #(100,300) # target coordinate
+    start = tuple(args.start) #(160,22) # starting coordinate
+    end = tuple(args.stop) #(444,302) # target coordinate
     stepSize = args.stepSize # stepsize for RRT
     node_list = [0] # list to store all the node points
 
